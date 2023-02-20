@@ -1,0 +1,73 @@
+step: 
+  creat-next-app
+  create sanity
+      make schemas
+  install tailwind
+      config
+  
+
+You should use getServerSideProps only if you need to render a page whose data must be fetched at request time.
+If you do not need to render the data during the request, then you should consider fetching data on the client side or getStaticProps.
+
+You can make the application server-side rendered, so all the data has been pre-fetched before loading the web app in the browser. 
+Afterward, you can also write a simple REST API without setting up a Node.js server.
+
+server side rendering: server thao tác với database để render ra html gửi về cho client, browser chỉ cần hiển thị ra html cho người dùng. Routing tại server
+    ưu điểm: load lần đầu nhanh, thân thiện seo vì dễ đọc được trang web dưới dạng html
+    nhược điểm: xử lý logic nhiều tại server => server dễ bị quá tải và chậm. Chuyển trang là phải load lại toàn bộ trang web
+
+client side rendering: client phải tải 1 cục Javascript về, sau đó chạy JS để DOM và gọi API, rồi mới render ra HTML
+Logic phức tạp liên quan đến bảo mật và database vẫn nằm ở server. Chuyển trang tại client.
+    ưu điểm: Logic được chuyển bớt cho client => Server được giảm tải. Page load một lần duy nhất. Các lần chuyển trang sau không cần load lại page.
+    Băng thông được giảm tải vì server chỉ cần gửi JSON
+    Nhược điểm: Lần lần đầu khá chậm vì client phải tải 1 cục Javascript về, sau đó chạy JS để DOM và gọi API, rồi mới render ra HTML.
+
+Pre-Rendering là công nghệ mới nhất về render web hiện nay. Website sẽ được render ra HTML trước khi 
+gửi về cho client (khá giống SSR). Vì ra sau cùng nên Pre-Rendering khắc phục được các nhược điểm của 
+các công nghệ như SSR hay CSR. Hiện nay có 2 loại Pre-Rendering đó là: Static Site Generation và Server Side Rendering (hay còn gọi là Universal).
+
+
+
+Data fetching & pre-rendering:
+
+Ngoài cách fetch data như react thì Next.js có 2 loại Pre-rendering: Static generation và Server-side rendering
+
+    Static generation: HTML sẽ được generate tất cả ngay từ đầu(build time) và được sử dụng cho mỗi lần request sau.
+    Server-side rendering: HTML sẽ được generate lại mỗi lần request, lấy data mới nhất từ server
+    
+1. getStaticProps(): lấy dữ liệu ngay thời điểm build time. Một khi ứng dụng đã được built, nó sẽ không làm mới dữ liệu cho đến khi một build khác được khởi chạy.
+                    Tạo trang tĩnh. getStaticProps sẽ chạy tạo build time nhưng khi develop ở local, getStaticProps chạy mỗi lần được request.
+
+2. getServerSideProps(): lấy dữ liệu mỗi khi user gửi request lên hệ thống. Nếu client đưa ra các request tiếp theo, dữ liệu sẽ được tìm và nạp lại.
+
+
+
+Use Cases of api folder
+For new projects, you can build your entire API with API Routes. If you have an existing API, you do not need to forward calls to the API through an API Route. Some other use cases for API Routes are:
+
+    Masking the URL of an external service (e.g. /api/secret instead of https://company.com/secret-url)
+    Using Environment Variables on the server to securely access external services.
+
+
+How do I fetch data in Next.js?
+Next.js provides a variety of methods depending on your use case. You can use:
+
+    Client-side data fetching: Fetch data with useEffect or SWR inside your React components
+    Server-side rendering with getServerSideProps
+    Static-site generation with getStaticProps
+    Incremental Static Regeneration by adding the `revalidate` prop to getStaticProps
+
+Routes are always lazy-loadable
+
+https://nextjs.org/docs/faq
+https://code.pieces.app/blog/should-you-use-redux-in-nextjs
+
+
+
+The dynamic import is normally used to conditionally load or lazy load components that
+ you might not need on that initial page load but you'd still need to implement when the component should lazy load.
+
+
+bug: thay vì gọi hàm fetchFollows() thì có thể gọi 1 api lấy thông tin user
+
+Hooks can only be called inside of the body of a function component.
