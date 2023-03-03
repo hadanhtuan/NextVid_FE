@@ -54,7 +54,7 @@ const socialNetworksAuth = async (type: string, setUser: any) => {
           {
             headers: {
               "Access-Control-Allow-Origin": "*",
-              "Content-type": "application/json",
+              "Content-type": "application/json",  
             },
           }
         )
