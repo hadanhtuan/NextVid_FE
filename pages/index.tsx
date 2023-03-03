@@ -23,7 +23,7 @@ export const getServerSideProps = async () => {
   const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   let response;
-  response = await axios.get(`https://next-vid-be-private-9hg1r7hy2-hadanhtuan.vercel.app/blog/default`);
+  response = await axios.get(`${BE_URL}/blog/default`);
   return {
     props: { videos: response.data },
   };
