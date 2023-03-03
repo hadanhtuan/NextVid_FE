@@ -20,7 +20,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: "https://next-vid-be-private-4j5lv59u2-hadanhtuan.vercel.app/:path*",
+        source: "/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
