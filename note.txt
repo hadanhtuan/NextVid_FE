@@ -70,4 +70,20 @@ The dynamic import is normally used to conditionally load or lazy load component
 
 bug: thay vì gọi hàm fetchFollows() thì có thể gọi 1 api lấy thông tin user
 
-Hooks can only be called inside of the body of a function component.
+Hooks can only be called inside of the body of a function component..
+
+
+ async headers() {
+    return [
+      {
+        // matching all API routes
+        source: "/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+        ]
+      } 
+    ]
+  }     
