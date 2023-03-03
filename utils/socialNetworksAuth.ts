@@ -73,10 +73,7 @@ const socialNetworksAuth = async (type: string, setUser: any) => {
         });
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = FacebookAuthProvider.credentialFromError(error);
+      console.log(error)
       return null;
     });
 };

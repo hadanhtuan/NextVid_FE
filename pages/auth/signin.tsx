@@ -14,7 +14,13 @@ const Signin = () => {
     e.preventDefault()
     const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL
     try {
-      const res = await axios.post(`${BE_URL}/auth/signin`, formData)
+      const res = await axios.post(`${BE_URL}/auth/signin`, formData,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "application/json",  
+        },
+      })
       console.log(res)    
       const user: IUser = {id: res.data.id, username: res.data.username, full_name: res.data.full_name, avatar: res.data.avatar, accessToken: res.data.accessToken, follows: res.data.follows, blogs: res.data.blogs}
       setUser(user)

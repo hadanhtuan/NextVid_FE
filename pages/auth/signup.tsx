@@ -46,7 +46,13 @@ const Signup = () => {
     const avatar = await uploadImg(imgData)
     
     const acc = {full_name, email, username, password, avatar}
-    const res = await axios.post(`${BE_URL}/auth/signup`, acc);
+    const res = await axios.post(`${BE_URL}/auth/signup`, acc,
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "application/json",  
+      },
+    });
     if(res.status === 201) Router.push('/auth/signin')
   }
 
