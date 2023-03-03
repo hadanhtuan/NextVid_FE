@@ -1,5 +1,11 @@
 import axios from "axios";
-import { getAuth, signInWithPopup, FacebookAuthProvider, GoogleAuthProvider, TwitterAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+} from "firebase/auth";
 import useAuthStore from "../store/authStore";
 import { IUser } from "./types";
 import { initializeApp } from "firebase/app";
@@ -15,12 +21,11 @@ const firebaseConfig = {
 };
 
 const socialNetworksAuth = async (type: string, setUser: any) => {
-
   const app = initializeApp(firebaseConfig);
-  let provider = new FacebookAuthProvider()
-  if(type =='facebook') provider = new FacebookAuthProvider();
-  if(type =='google') provider = new GoogleAuthProvider();
-  if(type =='twitter') provider = new TwitterAuthProvider();
+  let provider = new FacebookAuthProvider();
+  if (type == "facebook") provider = new FacebookAuthProvider();
+  if (type == "google") provider = new GoogleAuthProvider();
+  if (type == "twitter") provider = new TwitterAuthProvider();
 
   provider.setCustomParameters({
     display: "popup",
@@ -42,19 +47,30 @@ const socialNetworksAuth = async (type: string, setUser: any) => {
     .then((accessToken) => {
       const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
       console.log(accessToken);
-      axios.post(`${BE_URL}/auth/${type}`, { accessToken }).then((res) => {
-        console.log(res);
-        const user: IUser = {
-          id: res.data.id,
-          username: res.data.username,
-          full_name: res.data.full_name,
-          avatar: res.data.avatar,
-          accessToken: res.data.accessToken,
-          follows: res.data.follows,
-          blogs: res.data.blogs,
-        };
-        setUser(user)
-      });
+      axios
+        .post(
+          `${BE_URL}/auth/${type}`,
+          { accessToken },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          const user: IUser = {
+            id: res.data.id,
+            username: res.data.username,
+            full_name: res.data.full_name,
+            avatar: res.data.avatar,
+            accessToken: res.data.accessToken,
+            follows: res.data.follows,
+            blogs: res.data.blogs,
+          };
+          setUser(user);
+        });
     })
     .catch((error) => {
       const errorCode = error.code;
