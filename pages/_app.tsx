@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
     if (userProfile) fetchUser(); // thay vì gọi hàm này thì có thể viết 1 api mới lấy thông tin của người dùng rồi setUser()
     setIsSSR(false);
-  }, [userProfile]);
+  }, []);
 
  
   // const fetchFollows = async () => {
