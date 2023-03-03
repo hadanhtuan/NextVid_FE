@@ -64,7 +64,7 @@ const VideoCard = ({ blog }: IProps) => {
     if (userProfile?.follows.find((item) => item.followingId === blog.userId))
       setIsFollow(true);
     console.log(isFollow);
-  }, [userProfile, userProfile]);
+  }, [userProfile]);
 
   useEffect(() => {
     if (videoRef?.current) {
@@ -91,7 +91,7 @@ const VideoCard = ({ blog }: IProps) => {
 
   const handleFollow = async () => {
     const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-
+    console.log(userProfile?.accessToken)
     const res = await axios.post(
       `${BE_URL}/user/follow/${blog.userId}`,
       {},
