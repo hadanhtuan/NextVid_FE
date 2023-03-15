@@ -17,6 +17,8 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { async } from "@firebase/util";
 import Link from "next/link";
 import { FiVolume2, FiVolumeX } from "react-icons/fi";
+import parse from 'html-react-parser';
+
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -40,7 +42,10 @@ const Detail = ({ blogDetail }: { blogDetail: IBlog }) => {
       setIsPlaying(true);
     }
   };
-
+  function convertTags(match: string) {
+    const link = match.slice(1, match.length)
+    return `<a  className='font-semibold text-[18px]' href='/tag/${link}'>` + match + "</a>";
+  }
 
   useEffect(() => {
     if (userProfile) setCanblogComment(true);
@@ -53,6 +58,11 @@ const Detail = ({ blogDetail }: { blogDetail: IBlog }) => {
     }
   }, [isMuted]);
   
+  useEffect(()=>{
+    setBlog({...blog, caption : blog.caption.replace(/(#|@)\w+/g, convertTags)});
+  }, [])
+
+    
   const handleLike = async (isLike: boolean) => {
     if (userProfile) {
       const res = await axios.put(`${BASE_URL}/api/like`, {
@@ -148,7 +158,7 @@ const Detail = ({ blogDetail }: { blogDetail: IBlog }) => {
             {blog.user?.username}
           </p>
         </div>
-        <div>{blog.caption}</div>
+        <div>{parse(blog.caption)}</div>
         <LikeButton
           likes={blog.likes}
           numComments={blog?.comments?.length || 0}

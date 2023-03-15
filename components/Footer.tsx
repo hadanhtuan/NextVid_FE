@@ -15,7 +15,7 @@ const Footer: NextPage = () => {
   )
   
   return (
-    <div className='mt-6 hidden xl:block'>
+    <div className='mt-6 hidden md:block'>
       <List list={footerList1} mt={false} />
       <List list={footerList2} mt />
       <List list={footerList3} mt />

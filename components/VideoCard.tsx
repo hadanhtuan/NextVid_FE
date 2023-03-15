@@ -90,6 +90,7 @@ const VideoCard = ({ blog }: IProps) => {
   };
 
   const handleFollow = async () => {
+    setIsFollow(true);
     const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
     console.log(userProfile?.accessToken)
     const res = await axios.post(
@@ -107,10 +108,10 @@ const VideoCard = ({ blog }: IProps) => {
       followingId: blog.userId,
     });
     setUser(userProfile);
-    setIsFollow(true);
   };
 
   const handleUnfollow = async () => {
+    setIsFollow(false);
     const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const res = await axios.delete(`${BE_URL}/user/unfollow/${blog.userId}`, {
@@ -123,10 +124,15 @@ const VideoCard = ({ blog }: IProps) => {
       1
     );
     setUser(userProfile);
-    setIsFollow(false);
   };
 
   const handleLike = async () => {
+    setIsLike(true);
+    setCurrentLike(true);
+    setTimeout(() => {
+      setCurrentLike(false);
+    }, 1000);
+    blog.likes.push({ userId: userProfile?.id || 0, blogId: blog.id });
     const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const res = await axios.post(
@@ -138,22 +144,9 @@ const VideoCard = ({ blog }: IProps) => {
         },
       }
     );
-    setIsLike(true);
-    setCurrentLike(true);
-    setTimeout(() => {
-      setCurrentLike(false);
-    }, 1000);
-    blog.likes.push({ userId: userProfile?.id || 0, blogId: blog.id });
   };
 
   const handleUnlike = async () => {
-    const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-    const res = await axios.delete(`${BE_URL}/blog/unlike/${blog.userId}`, {
-      headers: {
-        Authorization: `Bearer ${userProfile?.accessToken}`,
-      },
-    });
     setIsLike(false);
     blog.likes.splice(
       blog.likes.findIndex((item: any) => {
@@ -161,6 +154,13 @@ const VideoCard = ({ blog }: IProps) => {
       }),
       1
     );
+    const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    const res = await axios.delete(`${BE_URL}/blog/unlike/${blog.userId}`, {
+      headers: {
+        Authorization: `Bearer ${userProfile?.accessToken}`,
+      },
+    });
   };
 
   // const onMutePress = () => {

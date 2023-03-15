@@ -124,7 +124,7 @@ const Comment = ({
           onClick={handleEmojiPickerhideShow}
         />
         {showEmojiPicker && (
-          <div className="absolute bottom-[80%] right-[20%]">
+          <div className="absolute bottom-[30%] right-[30%]">
             <EmojiPicker onEmojiClick={handleEmojiClick} />
           </div>
         )}

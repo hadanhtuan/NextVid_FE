@@ -200,7 +200,7 @@ const Upload = () => {
           onClick={handleEmojiPickerhideShow}
         />
         {showEmojiPicker && (
-          <div className="absolute bottom-0 right-[20%]">
+          <div className="absolute top-[100%] right-0">
             <EmojiPicker onEmojiClick={handleEmojiClick} />
           </div>
         )}

@@ -26,30 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     setIsSSR(false);
   }, []);
 
- 
-  // const fetchFollows = async () => {
-  //   const BE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-  //   axios
-  //     .get(`${BE_URL}/user/follow/all`, {
-  //       headers: {
-  //         Authorization: `Bearer ${user?.accessToken}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       if (user) user.follows = res.data;
-  //       setUser(user)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   if (isSSR) return null;
   let styleApp;
   let styleSidebar;
   if (pathname == "/" || pathname.includes('search')) {
-    styleApp = "xl:w-[1140px] m-auto overflow-hidden h-[100vh]";
+    styleApp = "m-auto xl:w-[1140px] m-auto overflow-hidden h-[100vh]";
     styleSidebar = "w-[32%] h-[92vh] overflow-hidden xl:hover:overflow-auto";
   } else {
     styleApp = "m-auto overflow-hidden h-[100vh]";

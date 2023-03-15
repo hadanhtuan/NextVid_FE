@@ -10,7 +10,7 @@ const Discover: NextPage = () => {
   const { topic } = router.query;
 
   const topicStyle =
-    "flex items-center flex-wrap justify-center gap-1 border-[1px] xl:border-gray-400 rounded-full px-[10px]   text-[13px] cursor-pointer";
+    "flex items-center flex-wrap justify-center gap-1 border-[1px] xl:border-gray-400 rounded-full px-[10px]   text-[13px] cursor-pointer hidden md:flex";
 
   return (
     <div className="xl:border-b-2 border-gray-200 xl:pb-4">
@@ -22,7 +22,7 @@ const Discover: NextPage = () => {
           <Link href={`/tag/${item.name}`} key={item.name}>
             <div className={topicStyle}>
               <HiOutlineHashtag className="text-[18px]" />
-              <span className="hidden xl:block">{item.name}</span>
+              <span className="xl:block">{item.name}</span>
             </div>
           </Link>
         ))}

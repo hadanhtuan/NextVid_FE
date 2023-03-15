@@ -57,17 +57,14 @@ const Signup = () => {
   }
 
   return (
-    <div className=" flex w-full flex-wrap absolute left-0 top-0 justify-center bg-no-repeat bg-cover bg-center bg-auth-img">
-      <div className="absolute bg-gradient-to-b from-green-500 to-green-400 opacity-75 inset-0 z-0"></div>
+    <div className=" flex w-full flex-wrap absolute left-0 top-0 justify-center bg-no-repeat bg-cover bg-center bg-auth-img2">
       <div className="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
         <div className="flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10">
           <div className="self-start hidden lg:flex flex-col  text-white">
             {/* <Image src="" className="mb-3" /> */}
-            <h1 className="mb-3 font-bold text-5xl">Hi ? Welcome Back Aji </h1>
+            <h1 className="mb-3 font-bold text-5xl">The secret of getting ahead is getting started</h1>
             <p className="pr-3">
-              Lorem ipsum is placeholder text commonly used in the graphic,
-              print, and publishing industries for previewing layouts and visual
-              mockups
+            Sharing is caring. Login to share your thoughts and experiences with the world
             </p>
           </div>
         </div>

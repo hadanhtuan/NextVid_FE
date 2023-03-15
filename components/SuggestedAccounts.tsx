@@ -37,7 +37,7 @@ const SuggestedAccounts: NextPage = () => {
               width={38}
               height={38}
             />
-            <div>
+            <div className="hidden md:block">
               <p className="flex items-center gap-1 text-[15px] font-bold p-0 m-0">
                 {user.username}
                 <GoVerified className="text-blue-400"/>

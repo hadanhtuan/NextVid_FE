@@ -73,6 +73,7 @@ bug: thay vì gọi hàm fetchFollows() thì có thể gọi 1 api lấy thông 
 Hooks can only be called inside of the body of a function component..
 
 
+
  async headers() {
     return [
       {
