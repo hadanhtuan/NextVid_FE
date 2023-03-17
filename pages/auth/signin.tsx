@@ -105,18 +105,16 @@ const Signin = () => {
               </div>
             </div>
             <div className="pt-5 text-center text-gray-400 text-xs">
-              <span>
-                Copyright © 2021-2022
-                <a
-                  href="https://codepen.io/uidesignhub"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Ajimon"
-                  className="text-green hover:text-green-500 "
-                >
-                  AJI
-                </a>
-              </span>
+              <p>
+                <p>
+
+                mail: javascriptmastery@tiktok.gmail.com
+                </p>
+              <p>
+
+                pass: javascriptmastery
+              </p>
+              </p>
             </div>
           </div>
         </div>
