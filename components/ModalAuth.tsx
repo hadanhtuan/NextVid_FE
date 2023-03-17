@@ -82,7 +82,7 @@ export default function Modal({
                       Continue with Github
                     </div>
 
-                  <Link href={"/auth/signin"}>
+                  {/* <Link href={"/auth/signin"}>
                     <div
                       className="relative cursor-pointer mb-4 border-[1px] border-gray-200 flex justify-center items-center h-[44px] w-[400px]"
                       onClick={() => {
@@ -92,7 +92,7 @@ export default function Modal({
                       <BsTwitter className="absolute font-semibold left-[5%] text-xl text-blue-400" />
                       Continue with Twitter
                     </div>
-                  </Link>
+                  </Link> */}
                 </div>
 
                 {/*footer*/}
