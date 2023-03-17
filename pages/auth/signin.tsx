@@ -104,7 +104,7 @@ const Signin = () => {
                 </button>
               </div>
             </div>
-            <div className="pt-5 text-center text-gray-400 text-xs">
+            <div className="pt-5 text-gray-400">
               <p>
                 <p>
 
