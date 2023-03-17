@@ -27,14 +27,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   if (isSSR) return null;
-  let styleApp;
+  let styleApp; 
   let styleSidebar;
+  let styleComp;
   if (pathname == "/" || pathname.includes('search')) {
     styleApp = "m-auto xl:w-[1140px] m-auto overflow-hidden h-[100vh]";
     styleSidebar = "w-[32%] h-[92vh] overflow-hidden xl:hover:overflow-auto";
+    styleComp="mt-4 h-[88vh] flex-1"
   } else {
     styleApp = "m-auto overflow-hidden h-[100vh]";
     styleSidebar = "w-[20%] h-[92vh] overflow-hidden xl:hover:overflow-auto";
+    styleComp="mt-4 overflow-y-scroll h-[88vh] flex-1"
+
   }
   return (
       <div className={styleApp}>
@@ -45,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <div className={styleSidebar}>
             <Sidebar />
           </div>
-          <div className="mt-4 overflow-scroll h-[88vh] flex-1">
+          <div className={styleComp}>
             <Component {...pageProps} />
           </div>
         </div>
